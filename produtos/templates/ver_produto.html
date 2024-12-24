@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'produtos/css/style.css' %}">
+    <img src="{% static 'produtos/img/126.png'%}" alt=""> 
+</head>
+<body>
+    <h1>Teste enviar Nome do produto</h1>,
+
+
+    <form action="{% url 'ver_produto' %}" method="POST"> {% csrf_token%}
+        <input type="text" name="nome" placeholder="Nome...">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

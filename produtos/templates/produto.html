@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'produtos/css/style.css' %}">
+    <title>Pesquise aqui - {%for t in titulo%}{{t}}{%endfor%}</title>
+</head>
+<body>
+    
+    <div class="container-formulario" style="margin-bottom: 0px;">
+        <form action="{% url 'pesquisa_produto' %}" method="POST"> {% csrf_token%}
+            <input type="text" placeholder="Pesquise o seu produto" name="nome" id="searchInput">
+            <button type="submit" id="searchButton">Buscar</button>
+        </form>
+    </div>
+    <div class="container-produto">
+        <h2>Produto</h2>
+        <div class="container-apresentacao-produto">
+            <div class="img-produto"><img src="{{img}}" alt="Imagem do Produto" class="product-image"></div>
+            {%for t in titulo%}
+            <p>{{t}} <br> R${{preco}}</p>
+            {%endfor%}
+            
+        </div>
+        <h2>Avaliaçoes</h2>
+        <div class="avaliacoes">
+            <div class="avaliaçao-produto">
+                <div class="star"></div>
+                {%for i in avaliacao%}
+                    <p>{{i}}<br>Estrelas</p>
+                {%endfor%}
+            </div>
+            <div class="avaliaçao-produto">
+                <div class="star"></div>
+                {%for i in avaliacao%}
+                    <p>{{i}}<br>Estrelas</p>
+                {%endfor%}
+            </div>
+            <div class="avaliaçao-produto">
+                <div class="star"></div>
+                {%for i in avaliacao%}
+                    <p>{{i}}<br>Estrelas</p>
+                {%endfor%}
+            </div>
+        </div>
+
+        <h2>Comentários</h2>
+        <div class="container-comentarios">
+            
+            {% for i in comentario%}
+                
+                    <div class="comentario-card">
+                        <img src="{%static 'produtos/img/no-perfil.png' %}" >
+                        <div class="comentario">
+                            <p>Usuário anônimo <br>{{i}}</p>
+                            
+                        </div>
+                    </div>
+            {%endfor%}
+        </div>
+        <button class="botao-ir-para-pagina-produto"><a href="{{url}}" target="_blank">Ir para pagina do produto</a></button>
+    </div>
+    
+</body>
+</html>
